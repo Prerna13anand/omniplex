@@ -28,6 +28,9 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}  
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -62,4 +65,5 @@ jobs:
           app-name: 'prerna-omniplex-app'
           slot-name: 'Production'
           package: .
+
           
